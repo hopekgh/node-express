@@ -25,7 +25,7 @@ const School = mongoose.model('School', schoolSchema);
 const redisClient = redis.createClient({ socket: { port: 6379, host: 'clicktmp' }  })
 redisClient.connect()
 
-edisClient.on('error', (error) => console.error(`Error : ${error}`));
+redisClient.on('error', (error) => console.error(`Error : ${error}`));
 
 
 app.use(cors());
