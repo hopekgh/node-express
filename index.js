@@ -26,11 +26,11 @@ const redisClient = redis.createClient({
     host: 'svc.sel5.cloudtype.app', // 예: 'localhost' 또는 '127.0.0.1'
     port: 30887 // 비밀번호가 설정된 경우
 });
-client.on('ready', function() {
+redisClient.on('ready', function() {
     console.log('Redis 서버가 준비되었습니다.');
 });
 
-client.on('error', function(err) {
+redisClient.on('error', function(err) {
     console.log('Redis 에러: ' + err);
 });
 
@@ -42,7 +42,7 @@ app.post('/incrementClick/:schoolName', (req, res) => {
     const incrementValue = req.body.clicks || 1;
 
     // 레디스에서 학교의 클릭수 증가
-    client.incrby(schoolName, incrementValue, (err, reply) => {
+    redisClient.incrby(schoolName, incrementValue, (err, reply) => {
         if (err) {
             return res.status(500).json({ error: 'Server Error' });
         }
