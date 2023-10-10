@@ -26,8 +26,12 @@ const redisClient = redis.createClient({
     host: 'svc.sel5.cloudtype.app', // 예: 'localhost' 또는 '127.0.0.1'
     port: 30887 // 비밀번호가 설정된 경우
 });
-redisClient.on('error', err => {
-  console.log('Error:', err);
+client.on('ready', function() {
+    console.log('Redis 서버가 준비되었습니다.');
+});
+
+client.on('error', function(err) {
+    console.log('Redis 에러: ' + err);
 });
 
 app.use(cors());
