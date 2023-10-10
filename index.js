@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const redis = require('redis');
+var cors = require('cors')
 
 const app = express();
 const PORT = 3000;
@@ -29,7 +30,7 @@ redisClient.on('error', err => {
   console.log('Error:', err);
 });
 
-app.use(express.json());
+app.use(cors());
 
 // 클릭 수 증가 엔드포인트
 app.post('/incrementClick/:schoolName', (req, res) => {
