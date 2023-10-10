@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 
 // MongoDB 연결
-mongoose.connect('mongodb://localhost:27017/schoolRanking', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://hopekgh:vuQquv-fukvu6-ruvnud@cluster0.mqzgbt4.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp", { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
