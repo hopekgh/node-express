@@ -89,6 +89,10 @@ const getSchoolRanking = async () => {
     return ranking;
 };
 
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+        
 app.get('/ranking', async (req, res) => {
     try {
         const ranking = await getSchoolRanking();
