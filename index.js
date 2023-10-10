@@ -16,15 +16,20 @@ db.once('open', () => {
 
 // MongoDB 스키마 및 모델 정의
 const schoolSchema = new mongoose.Schema({
-  name: String,
-  clicks: { type: Number, default: 0 }
+    시도교육청코드: String,
+    시도교육청명: String,
+    표준학교코드: Number,
+    학교명: String,
+    학교종류명: String,
+    clicks: Number
 });
 const School = mongoose.model('School', schoolSchema);
 
 // Redis 클라이언트 생성
-const redisClient = redis.createClient({ socket: { port: 6379, host: 'clicktmp' }  })
-redisClient.connect()
 
+const redisClient = redis.createClient({ socket: { port: 30887, host: 'svc.sel5.cloudtype.app' }  })
+redisClient.connect()
+redisClient.on('connect', () => console.log('Connected to redis server'));
 redisClient.on('error', (error) => console.error(`Error : ${error}`));
 
 
