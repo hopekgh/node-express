@@ -22,8 +22,8 @@ const School = mongoose.model('School', schoolSchema);
 
 // Redis 클라이언트 생성
 const redisClient = redis.createClient({
-    host: 'clicktmp', // 예: 'localhost' 또는 '127.0.0.1'
-    port: 6379 // 비밀번호가 설정된 경우
+    host: 'svc.sel5.cloudtype.app', // 예: 'localhost' 또는 '127.0.0.1'
+    port: 30887 // 비밀번호가 설정된 경우
 });
 redisClient.on('error', err => {
   console.log('Error:', err);
