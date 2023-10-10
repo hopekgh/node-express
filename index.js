@@ -22,20 +22,17 @@ const schoolSchema = new mongoose.Schema({
 const School = mongoose.model('School', schoolSchema);
 
 // Redis 클라이언트 생성
-const redisClient = redis.createClient({
+
+(async () => {
+    const redisClient = redis.createClient({
     host: 'clicktmp', // 예: 'localhost' 또는 '127.0.0.1'
     port: 6379 // 비밀번호가 설정된 경우
 });
-redisClient.connect().then(async (res) => {
-    console.log('connected');
-})
-redisClient.on('ready', function() {
-    console.log('Redis 서버가 준비되었습니다.');
-});
 
-redisClient.on('error', function(err) {
-    console.log('Redis 에러: ' + err);
-});
+  redisClient.on('error', (error) => console.error(`Error : ${error}`));
+
+  await redisClient.connect();
+})();
 
 app.use(cors());
 
